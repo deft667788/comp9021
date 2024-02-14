@@ -5,7 +5,6 @@ from math import floor
 # import numpy
 import numpy as np
 
-
 # grid1 = [
 #     [1, 1, 0, 0],
 #     [1, 1, 0, 0],
@@ -74,7 +73,7 @@ class Polygons:
         # check 所有的行的长度都相等
         if len(set([len(m) for m in input_grid])) != 1:
             raise PolygonsError('Incorrect input.')
-        # check 读取到的所有的数据都是0和1， 不能有其他的数字
+        # check 读取到的所有的数据都是0和1, 不能有其他的数字
         for rows in input_grid:
             for element in rows:
                 if element not in ['0', '1']:
@@ -91,7 +90,7 @@ class Polygons:
 
         neighbour_points = []
         for i in range(len(self.directions)):
-            # 从dir_from 开始，遍历8个点
+            # 从dir_from 开始,遍历8个点
             cur_dir = (dir_from + i) % len(self.directions)
             # 对应的方向的
             dir_x, dir_y = self.directions[cur_dir]
@@ -199,7 +198,7 @@ class Polygons:
 
     def compute_area(self, grid1):
         temp = sum((grid1[i - 1][1] + 1) * (grid1[i][0] + 1) - (grid1[i - 1][0] + 1) * (grid1[i][1] + 1)
-                   for i in range(len(grid1)))
+                    for i in range(len(grid1)))
         area = 1 / 2 * 0.16 * temp
         return area
 
@@ -226,7 +225,7 @@ class Polygons:
             middle_x = (neighbour_points[0][0] + neighbour_points[len(neighbour_points) // 2][0]) / 2
             middle_y = (neighbour_points[0][1] + neighbour_points[len(neighbour_points) // 2][1]) / 2
             if all(middle_x == (neighbour_points[x][0] + neighbour_points[len(neighbour_points) // 2 + x][0]) / 2 \
-                   and middle_y == (
+                    and middle_y == (
                            neighbour_points[x][1] + neighbour_points[len(neighbour_points) // 2 + x][1]) / 2 for \
                    x in range(len(neighbour_points) // 2)):
                 if len(neighbour_points) % 4 == 0 and \
@@ -271,9 +270,9 @@ class Polygons:
         return depth
 
     def dfs(self):
-        # 1.直接改grid,遍历过，recursion
+        # 1.直接改grid,遍历过,recursion
 
-        # 为什么是2，里面已经有0，1
+        # 为什么是2,里面已经有0,1
         grid = []
         component_id = 2
         for y in range(len(self.digits)):
@@ -286,7 +285,7 @@ class Polygons:
                         start_x, start_y, dir_from = possible_points[0]
                         path = []
                         if not self.dfs_recursion_change_value((start_x, start_y), end_point, component_id, dir_from,
-                                                               path):
+                                                                path):
                             raise PolygonsError("Cannot get polygons as expected.")
 
                     else:
@@ -320,7 +319,7 @@ class Polygons:
         return polygon_attributes
 
     def dfs2(self):
-        # 为什么是2，里面已经有0，1
+        # 为什么是2,里面已经有0,1
         grid = []
         component_id = 2
         for y in range(len(self.digits)):
@@ -333,7 +332,7 @@ class Polygons:
                         start_x, start_y, dir_from = possible_points[0]
                         path = []
                         if not self.dfs_recursion_change_value((start_x, start_y), end_point, component_id, dir_from,
-                                                               path):
+                                                                path):
                             raise PolygonsError("Cannot get polygons as expected.")
 
                     else:
@@ -375,11 +374,11 @@ class Polygons:
         for i in polygon_attributes:
             count += 1
             print('Polygon {}:\n'
-                  '    Perimeter: {}\n'
-                  '    Area: {:.2f}\n'
-                  '    Convex: {}\n'
-                  '    Nb of invariant rotations: {}\n'
-                  '    Depth: {}'.format(count, i[1], i[2], i[3], i[4], i[5]))
+                    '    Perimeter: {}\n'
+                    '    Area: {:.2f}\n'
+                    '    Convex: {}\n'
+                    '    Nb of invariant rotations: {}\n'
+                    '    Depth: {}'.format(count, i[1], i[2], i[3], i[4], i[5]))
 
     def display(self):
         polygon_attributes = self.dfs2()
@@ -402,15 +401,15 @@ class Polygons:
         # print(tex_file_name)
         with open(tex_file_name, 'w') as tex_file:
             print('\\documentclass[10pt]{article}\n'
-                  '\\usepackage{tikz}\n'
-                  '\\usepackage[margin=0cm]{geometry}\n'
-                  '\\pagestyle{empty}\n'
-                  '\n'
-                  '\\begin{document}\n'
-                  '\n'
-                  '\\vspace*{\\fill}\n'
-                  '\\begin{center}\n'
-                  '\\begin{tikzpicture}[x=0.4cm, y=-0.4cm, thick, brown]', file=tex_file)
+                    '\\usepackage{tikz}\n'
+                    '\\usepackage[margin=0cm]{geometry}\n'
+                    '\\pagestyle{empty}\n'
+                    '\n'
+                    '\\begin{document}\n'
+                    '\n'
+                    '\\vspace*{\\fill}\n'
+                    '\\begin{center}\n'
+                    '\\begin{tikzpicture}[x=0.4cm, y=-0.4cm, thick, brown]', file=tex_file)
 
             print(
                 '\\draw[ultra thick] (0, 0) -- ({}, 0) -- ({}, {}) -- (0, {}) -- cycle;\n'.format(
@@ -428,13 +427,13 @@ class Polygons:
                     print('% Depth {}'.format(depth_print), file=tex_file)
                 print('\\filldraw[fill=orange!{}!yellow] {} -- cycle;'.format(x[-1], visited_points), file=tex_file)
             print('\\end{tikzpicture}\n'
-                  '\\end{center}\n'
-                  '\\vspace*{\\fill}\n'
-                  '\n'
-                  '\\end{document}', file=tex_file)
+                    '\\end{center}\n'
+                    '\\vspace*{\\fill}\n'
+                    '\n'
+                    '\\end{document}', file=tex_file)
 
         # 格式化字符串输出
-        # 注意：如果没有str, 会调用repr
+        # 注意:如果没有str, 会调用repr
 
     def __str__(self):
         return f'__str__: {self.file_name}'

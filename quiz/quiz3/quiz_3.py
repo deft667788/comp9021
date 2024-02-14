@@ -52,7 +52,7 @@
 # top_left_corner and bottom_right_corner are arbitrary pairs
 # of integers, but practically such that the output can fit
 # on the screen.
-# 
+#
 # For a discussion about the construction, see
 # https://www.youtube.com/watch?v=_UtCli1SgjI&t=66s
 # The video also points to a website that you might find useful:
@@ -62,7 +62,7 @@ def  tooth_picks(stage,top_left_corner,bottom_right_corner):
 
     min_x,max_y = top_left_corner
     max_x,min_y = bottom_right_corner
-   
+
     black_points = [] # all black points
     last_ends = [(0,0)]
     from collections import Counter

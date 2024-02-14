@@ -1,6 +1,5 @@
-from collections import defaultdict
 import re
-
+from collections import defaultdict
 
 # The words in the file are supposed to consist of nothing but letters
 # (no apostrophes, no hyphens...), possibly immediately followed by
@@ -26,7 +25,7 @@ import re
 #   larger word numbers.
 #
 # You can assume that filename is the name of a file that exists
-# in the working directory. Do NOT use absolute paths. 
+# in the working directory. Do NOT use absolute paths.
 #
 # The code that is already written makes sure that spotted words
 # are output in capitalised form, and in lexicographic order, so
@@ -89,8 +88,8 @@ def longest_words(filename):
         print(f'{word.capitalize()}:')
         for (sentence_nb, word_nb) in longest_words[word]:
             print(f'    Spotted as word number {word_nb} in sentence '
-                  f'number {sentence_nb}.'
-                  )
+                f'number {sentence_nb}.'
+                )
 
 
 if __name__ == '__main__':

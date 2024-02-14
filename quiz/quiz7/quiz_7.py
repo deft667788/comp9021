@@ -57,5 +57,5 @@ def centrifuge_recursion(k, factors):
 
         # recursive case
         return centrifuge_recursion(k - factors[0], factors)
-    return False    
+    return False
     # centrifuge2(k, prime_factors)

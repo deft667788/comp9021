@@ -32,7 +32,7 @@ def binary_lunar_addition(number_1, number_2):
         b, b1=divmod(b,10)
         result = result*10+max(a1,b1)
 
- 
+
     result=list(str(result))
     result.reverse()
     result=int(''.join(str(symbol) for symbol in result))
@@ -76,5 +76,5 @@ def binary_lunar_multiplication(multiplicand, multiplier):
             line+=str(min(int(b1),int(a1)))
             
         numbers.append(int(line[::-1]+i*'0'))
-    result=lunar_addition(*numbers)    
-    return result    
+    result=lunar_addition(*numbers)
+    return result

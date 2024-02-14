@@ -35,6 +35,8 @@
 # In the tests, its value won't exceed 50_000_000.
 
 from math import sqrt
+
+
 def sieve_of_primes_up_to(n):
     sieve = [True] * (n + 1)
     for p in range(2, round(sqrt(n)) + 1):
@@ -85,7 +87,7 @@ def tri_numbers(n):
                 
     if result:
         max_gap = max(result.keys())
-        print(f'The maximum gap in decompositions is {max_gap}.')                
+        print(f'The maximum gap in decompositions is {max_gap}.')
         print(f'It is achieved with:')
         for first,second,third in result[max_gap]:
             max_number = first*second*third

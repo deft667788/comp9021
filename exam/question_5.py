@@ -13,7 +13,7 @@
 # Most of the code is written already, and there are not many statements
 # left for you to write...
 
-from random import seed, randrange
+from random import randrange, seed
 
 
 def travel(for_seed, size, upper_bound):
@@ -97,8 +97,8 @@ def travel(for_seed, size, upper_bound):
     for i in range(1, size + 1):
         for j in range(1, size + 1):
             from_to[grid[i][j]] = max(from_to[grid[i][j]],
-                                      explore_from(grid, upper_bound, i, j)
-                                      )
+                                        explore_from(grid, upper_bound, i, j)
+                                        )
             if i == 1 and j == 3:
                 explore_from(grid, upper_bound, i, j)
 
