@@ -10,13 +10,13 @@
 # including one at the very end.
 
 
-from random import seed, randrange
 import sys
+from random import randrange, seed
 
-try: 
+try:
     for_seed, dim = (int(x) for x in input('Enter two integers, the second '
-                                           'one being 3 or more: '
-                                          ).split()
+                                        'one being 3 or more: '
+                                        ).split()
                     )
     if dim <= 2:
         raise ValueError
@@ -42,7 +42,7 @@ def display_picture1():
     print(' ','|'+(dim-1)*' '+'*'+(dim-1)*' '+'|')
     print(' ','|'+(2*dim-1)*' '+'|')
     print(' ','|'+(2*dim-1)*'-'+'|')
-print()    
+print()
 display_picture1()
 print()
 
