@@ -1,6 +1,5 @@
 from itertools import zip_longest
 
-
 # The carry over of the sum of all units is discarded.
 # The carry over of the sum of all multiples of 10 is discarded.
 # The carry over of the sum of all multiples of 100 is discarded.
@@ -37,28 +36,14 @@ def sum_discarding_carry_overs(*numbers):
     >>> sum_discarding_carry_overs(9054, 3, 3577, 78, 452563)
     454055
     '''
-    res = None
-    for n in list(numbers):
-        if res is None:
-            res = n
-        else:
-            temp_res = res
-            res = 0
-            while temp_res != 0 or n != 0:
-                res *= 10
-                cur_digit_res = temp_res % 10
-                cur_digit_n = n % 10
-                temp_res //= 10
-                n //= 10
+    # Convert all numbers to strings to process them digit by digit
+    # Reverse for easier processing from least significant digit
+    str_numbers = [str(number)[::-1] for number in numbers]
+    # Use zip_longest to handle numbers of different lengths, fill missing values with '0'
+    sum_str = ''.join(str((sum(int(digit) for digit in digits) % 10)) for digits in zip_longest(*str_numbers, fillvalue='0'))
+    # Reverse back and convert to integer
+    return int(sum_str[::-1])
 
-                cur_digit = (cur_digit_res + cur_digit_n) % 10
-                res += cur_digit
-
-        while res > 10 and res % 10 == 0:
-            res //= 10
-
-    return res
-    # REPLACE THE RETURN STATEMENT ABOVE WITH YOUR CODE 
 
 
 if __name__ == '__main__':
